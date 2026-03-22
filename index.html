@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Home France | Viviendas Modulares Premium en Necochea</title>
+    <meta name="description" content="Venta de casas modulares premium importadas de China. Calidad arquitectonica lista para habitar en Necochea, Buenos Aires.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">ECO<span>HOME</span></a>
+                <ul class="nav__list">
+                    <li><a href="#filosofia" class="nav__link">Filosofía</a></li>
+                    <li><a href="#ventajas" class="nav__link">Ventajas</a></li>
+                    <li><a href="#modelos" class="nav__link">Modelos</a></li>
+                    <li><a href="#calidades" class="nav__link">Calidades</a></li>
+                    <li><a href="#plazos" class="nav__link">Plazos</a></li>
+                </ul>
+                <a href="#contacto" class="btn btn--primary" style="padding: 12px 24px;">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title" style="font-size: 3rem; line-height: 1.2;">VIVIENDAS MÓVILES Y EXTENSIBLES <br><span style="color: var(--primary);">DE CALIDAD PREMIUM</span></h1>
+                    <p class="hero__subtitle" style="margin-top: 15px;">
+                        Viviendas expandibles con estándares de construcción mejorados. La experiencia del lujo aplicada a la eficiencia.
+                    </p>
+                    <div class="hero__actions" style="margin-top: 30px;">
+                        <a href="#modelos" class="btn btn--primary">Descubrir Modelos</a>
+                    </div>
+                </div>
+                <div class="hero__image-container">
+                    <div class="carousel" id="hero-carousel">
+                        <div class="carousel__track-container">
+                            <ul class="carousel__track">
+                                <li class="carousel__slide current-slide">
+                                    <img class="carousel__image" src="fotos recursos/28.jfif" alt="Eco Home 1">
+                                </li>
+                                <li class="carousel__slide">
+                                    <img class="carousel__image" src="fotos recursos/25.jfif" alt="Eco Home 2">
+                                </li>
+                                <li class="carousel__slide">
+                                    <img class="carousel__image" src="fotos recursos/10.jfif" alt="Eco Home 3">
+                                </li>
+                                <li class="carousel__slide">
+                                    <img class="carousel__image" src="fotos recursos/12.jfif" alt="Eco Home 4">
+                                </li>
+                                <li class="carousel__slide">
+                                    <img class="carousel__image" src="fotos recursos/15.jfif" alt="Eco Home 5">
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <button class="carousel__button carousel__button--left is-hidden">
+                            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                        </button>
+                        <button class="carousel__button carousel__button--right">
+                            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                        </button>
+
+                        <div class="carousel__nav">
+                            <button class="carousel__indicator current-slide"></button>
+                            <button class="carousel__indicator"></button>
+                            <button class="carousel__indicator"></button>
+                            <button class="carousel__indicator"></button>
+                            <button class="carousel__indicator"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 01 Filosofia -->
+    <section id="filosofia" class="about" style="background: #fff; padding: 80px 0;">
+        <div class="container">
+            <div class="contact-layout">
+                <div>
+                    <h2 class="section-title">01. La experiencia del lujo aplicada a la eficiencia</h2>
+                    <p style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 600; color: var(--primary-dark);">
+                        No somos meros intermediarios. Somos constructores.
+                    </p>
+                    <p style="margin-bottom: 20px;">
+                        Como división de <strong>Elite Properties Spain</strong>, nuestra misión es clara: democratizar el acceso a una vivienda de calidad sin renunciar a la excelencia constructiva. Hemos analizado la base de las casas extensibles estándar y la hemos rediseñado desde cero, aplicando mejoras de nuestras villas de lujo.
+                    </p>
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 12px;">🌡️ <strong>Confort Térmico Superior:</strong> Aislamiento reforzado para eficiencia energética.</li>
+                        <li style="margin-bottom: 12px;">🏗️ <strong>Durabilidad Estructural:</strong> Soluciones constructivas probadas en alta gama.</li>
+                        <li>✨ <strong>Calidad Percibida:</strong> Carpintería y acabados seleccionados bajo criterio de lujo.</li>
+                    </ul>
+                </div>
+                <div class="hero__image-container" style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px;">
+                    <img src="fotos recursos/3.jfif" alt="Vivienda Eco Elite Exterior" style="border-radius: 16px; width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-medium);">
+                    <img src="fotos recursos/2.jfif" alt="Vivienda Eco Elite Interior" style="border-radius: 16px; width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-medium);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 Ventajas -->
+    <section id="ventajas" class="about" style="background: var(--bg-gray); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">02. Ventajas Únicas</h2>
+                <p class="section-subtitle">¿Por qué nuestro sistema es diferente?</p>
+            </div>
+            
+            <div class="models__grid" style="margin-top: 40px;">
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Instalación Exprés</h3>
+                    <p>Montaje en menos de 24 horas una vez en destino, con mínima intervención en el terreno.</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Móvil y Reubicable</h3>
+                    <p>La casa se puede plegar y trasladar a otra ubicación si cambian sus planes o vende la parcela.</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Sin Obras Pesadas</h3>
+                    <p>No requiere estructura de hormigón tradicional. Menos licencias, menos suciedad y menos molestias.</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Aislamiento y Costes</h3>
+                    <p>Aislamiento superior con paneles de núcleo térmico. Precio cerrado sin sorpresas ni sobrecostes.</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Llave en Mano</h3>
+                    <p>Disfrute de su vivienda completamente equipada con cocina y baño desde el primer minuto.</p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Diseño Moderno</h3>
+                    <p>Acabados exteriores e interiores de alta estética que compiten directamente con construcciones tradicionales de lujo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modelos -->
+    <section id="modelos" class="models">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Encuentra tu espacio ideal</h2>
+                <p class="section-subtitle">Serie ECO: Optimizada, elegante y lista para usar.</p>
+            </div>
+            
+            <div class="models__grid">
+                <!-- Modelo 37 -->
+                <div class="model-card">
+                    <img src="living.jpg" alt="ECO 37" class="model-card__img">
+                    <div class="model-card__content">
+                        <h3 class="model-card__title">ECO 37 (Standard)</h3>
+                        <div class="model-card__specs" style="font-size: 0.9rem; margin-bottom: 10px; color: #666; font-weight: 500;">
+                            <span>5,90 m × 6,26 m · 37 m²</span>
+                        </div>
+                        <p>El estudio versátil. Olvídese de largos plazos de construcción. Ideal para casa de invitados o alojamiento turístico.</p>
+                        <a href="eco37.html" class="btn btn--primary" style="margin-top: 15px; display: inline-block; padding: 8px 16px;">Ver Planos y Detalles</a>
+                    </div>
+                </div>
+
+                <!-- Modelo 57 -->
+                <div class="model-card">
+                    <img src="kitchen.jpg" alt="ECO 57" class="model-card__img">
+                    <div class="model-card__content">
+                        <h3 class="model-card__title">ECO 57 (Equilibrio perfecto)</h3>
+                        <div class="model-card__specs" style="font-size: 0.9rem; margin-bottom: 10px; color: #666; font-weight: 500;">
+                            <span>9,00 m × 6,34 m · 57 m²</span>
+                        </div>
+                        <p>El equilibrio perfecto entre espacio habitable y optimización. Confort inteligente para vivir cómodamente.</p>
+                        <a href="#contacto" class="btn" style="margin-top: 15px; background: white; border: 1px solid var(--primary); display: inline-block; padding: 8px 16px; color: var(--primary);">Consultar</a>
+                    </div>
+                </div>
+
+                <!-- Modelo 75 -->
+                <div class="model-card">
+                    <img src="kids.jpg" alt="ECO 75" class="model-card__img">
+                    <div class="model-card__content">
+                        <h3 class="model-card__title">ECO 75 (La residencia completa)</h3>
+                        <div class="model-card__specs" style="font-size: 0.9rem; margin-bottom: 10px; color: #666; font-weight: 500;">
+                            <span>11,80 m × 6,34 m · 75 m²</span>
+                        </div>
+                        <p>Mucha amplitud. Cerca de 75 m² sin concesiones. Pensado para familias con 3 a 4 habitaciones disponibles.</p>
+                        <a href="eco75.html" class="btn btn--primary" style="margin-top: 15px; display: inline-block; padding: 8px 16px;">Ver Planos y Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acabados -->
+    <section id="calidades" class="about" style="background: #fff; padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Acabados y Calidades</h2>
+                <p class="section-subtitle">Los detalles que marcan la diferencia. Soluciones premium incluidas.</p>
+            </div>
+            
+            <div class="models__grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🍳</div>
+                    <h3 style="color: var(--primary-dark);">Cocinas Equipadas</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Módulos de alta resistencia, encimera, fregadero y grifería de calidad ya incluidos e instalados en los modelos.</p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🚿</div>
+                    <h3 style="color: var(--primary-dark);">Baños Completos</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Ducha con mampara, inodoro, lavabo con mueble y revestimientos 100% resistentes a la humedad, con ventilación e iluminación.</p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">🚪</div>
+                    <h3 style="color: var(--primary-dark);">Carpintería Superior</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Ventanas con perfilería premium y acristalamiento optimizado para máximo confort térmico y acústico en toda la casa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plazos -->
+    <section id="plazos" class="about" style="background: var(--bg-gray); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Plazos para la entrega</h2>
+                <p class="section-subtitle">Tu casa, paso a paso, con total transparencia.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-step__num">1</div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📝</div>
+                    <div class="timeline-step__title">Firma de Contrato</div>
+                    <p style="font-size: 0.9rem; color: #666;">Configuración del modelo y cierre del acuerdo.<br><span style="color: var(--primary); font-weight: 700; display: block; margin-top: 5px;">3 a 5 días</span></p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-step__num">2</div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🏭</div>
+                    <div class="timeline-step__title">Espera Producción</div>
+                    <p style="font-size: 0.9rem; color: #666;">Ingreso a línea de fabricación.<br><span style="color: var(--primary); font-weight: 700; display: block; margin-top: 5px;">30 a 45 días</span></p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-step__num">3</div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🛠️</div>
+                    <div class="timeline-step__title">Fabricación</div>
+                    <p style="font-size: 0.9rem; color: #666;">Construcción modular y pruebas de control (QC).<br><span style="color: var(--primary); font-weight: 700; display: block; margin-top: 5px;">30 días</span></p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-step__num">4</div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🚢</div>
+                    <div class="timeline-step__title">Envío a Destino</div>
+                    <p style="font-size: 0.9rem; color: #666;">Transporte logístico marítimo y terrestre.<br><span style="color: var(--primary); font-weight: 700; display: block; margin-top: 5px;">30 a 40 días</span></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; background: white; padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow-soft);">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; color: var(--dark);">
+                    <span>Inicio del Proyecto</span>
+                    <span>Entrega Estimada (~3.5 Meses)</span>
+                </div>
+                <div style="width: 100%; height: 20px; background: var(--bg-gray); border-radius: 10px; overflow: hidden; display: flex;">
+                    <div style="height: 100%; background: #a4d893; width: 5%;" title="Firma (3-5 días)"></div>
+                    <div style="height: 100%; background: #85c370; width: 35%;" title="Espera (30-45 días)"></div>
+                    <div style="height: 100%; background: #6eb05a; width: 30%;" title="Fabricación (30 días)"></div>
+                    <div style="height: 100%; background: #4a823a; width: 30%;" title="Envío (30-40 días)"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; font-size: 0.85rem; color: #666; text-align: center;">
+                    <span style="flex: 1;"><span style="display:inline-block; width:10px; height:10px; background:#a4d893; border-radius:50%; margin-right:5px;"></span>Firma</span>
+                    <span style="flex: 1;"><span style="display:inline-block; width:10px; height:10px; background:#85c370; border-radius:50%; margin-right:5px;"></span>Espera</span>
+                    <span style="flex: 1;"><span style="display:inline-block; width:10px; height:10px; background:#6eb05a; border-radius:50%; margin-right:5px;"></span>Fabricación</span>
+                    <span style="flex: 1;"><span style="display:inline-block; width:10px; height:10px; background:#4a823a; border-radius:50%; margin-right:5px;"></span>Envío a Destino</span>
+                </div>
+            </div>
+            
+            <div class="timeline-payment" style="margin-top: 20px;">
+                <div><span style="display:inline-block; width:12px; height:12px; background:var(--primary); border-radius:50%; margin-right:5px;"></span> Contratación: <strong>50%</strong></div>
+                <div><span style="display:inline-block; width:12px; height:12px; background:#4aa1ec; border-radius:50%; margin-right:5px;"></span> Fabricada (lista para enviar): <strong>30%</strong></div>
+                <div><span style="display:inline-block; width:12px; height:12px; background:#4aa1ec; border-radius:50%; margin-right:5px;"></span> Previo envío internacional: <strong>20%</strong></div>
+            </div>
+            
+            <div class="timeline-total" style="background: var(--primary-dark);">
+                TIEMPO TOTAL ESTIMADO DE ENTREGA: Aproximadamente 3 meses y medio
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Listo para dar el siguiente paso?</h2>
+                <p class="section-subtitle" style="color: #9bac8f;">Cuéntenos su idea y le ayudaremos a elegir la distribución ideal.</p>
+            </div>
+
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <div class="contact-info__item">
+                        <h3 style="color: #fff; margin-bottom: 10px;">Contacto Directo</h3>
+                        <p style="color: #9bac8f; font-size: 1.1rem;">Avenida de España 7, Calahonda<br>Mijas, Málaga</p>
+                    </div>
+                    <div class="contact-info__item">
+                        <h3 style="color: #fff; margin-bottom: 10px;">Teléfono & WhatsApp</h3>
+                        <p style="color: #9bac8f; font-size: 1.2rem; font-weight: bold;">(+34) 619 846 388</p>
+                    </div>
+                    <div class="contact-info__item">
+                        <h3 style="color: #fff; margin-bottom: 10px;">Atención</h3>
+                        <p style="color: #9bac8f;">Web: www.ecohomefence.com<br>Email: info@ecohomefence.com<br><br><em>También atendemos por WhatsApp y videollamada.</em></p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <h3 style="margin-bottom: 20px; font-size: 1.5rem; color: white;">Solicite una propuesta personalizada</h3>
+                        <p style="margin-bottom: 25px; color: #ccc; line-height: 1.5;">Le daremos recomendaciones de modelo según uso y parcela, opciones de distribución, presupuestos y plazos estimados reales.</p>
+                        <div class="form-group">
+                            <label class="form-label" style="color: white;">Nombre</label>
+                            <input type="text" class="form-input" placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="color: white;">Email o Teléfono</label>
+                            <input type="text" class="form-input" placeholder="Email o nº móvil">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" style="color: white;">Uso pensado (Vivienda, Oficina, Casa de Invitados)</label>
+                            <textarea class="form-textarea" rows="4" placeholder="Breve descripción de su proyecto..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary" style="width: 100%; font-size: 1.1rem;">Enviar Consulta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__logo">ECO<span>HOME</span></p>
+            <p class="footer__copy">&copy; 2026 Eco Home Fence. Empresa filial de Elite Properties Spain.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/34619846388" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.564-10.563 5.826 0 10.564 4.741 10.564 10.564 0 5.824-4.74 10.564-10.564 10.564z"/></svg>
+    </a>
+
+    <script>
+        (function() {
+            var CarouselManager = {
+                init: function() {
+                    var carousel = document.querySelector(".carousel");
+                    if (!carousel) return;
+
+                    var track = carousel.querySelector(".carousel__track");
+                    if (!track) return;
+                    
+                    var slides = Array.from(track.children);
+                    var nextButton = carousel.querySelector(".carousel__button--right");
+                    var prevButton = carousel.querySelector(".carousel__button--left");
+                    var dotsNav = carousel.querySelector(".carousel__nav");
+                    var dots = dotsNav ? Array.from(dotsNav.children) : [];
+
+                    if (slides.length === 0) return;
+
+                    function updateSlidePositions() {
+                        var firstSlide = slides[0];
+                        if (!firstSlide) return;
+                        var slideWidth = firstSlide.getBoundingClientRect().width;
+                        if (slideWidth === 0) {
+                            setTimeout(updateSlidePositions, 100);
+                            return;
+                        }
+                        slides.forEach(function(slide, index) {
+                            slide.style.left = slideWidth * index + "px";
+                        });
+                    }
+
+                    function moveToSlide(track, currentSlide, targetSlide) {
+                        if (!targetSlide) return;
+                        track.style.transform = "translateX(-" + targetSlide.style.left + ")";
+                        currentSlide.classList.remove("current-slide");
+                        targetSlide.classList.add("current-slide");
+                    }
+
+                    function updateDots(currentDot, targetDot) {
+                        if (!currentDot || !targetDot) return;
+                        currentDot.classList.remove("current-slide");
+                        targetDot.classList.add("current-slide");
+                    }
+
+                    updateSlidePositions();
+
+                    function nextSlide() {
+                        var currentSlide = track.querySelector(".current-slide") || slides[0];
+                        var nextSlide = currentSlide.nextElementSibling || slides[0];
+                        var currentDot = dotsNav ? dotsNav.querySelector(".current-slide") : null;
+                        var nextIndex = slides.indexOf(nextSlide);
+                        var targetDot = dots[nextIndex];
+
+                        moveToSlide(track, currentSlide, nextSlide);
+                        updateDots(currentDot, targetDot);
+                    }
+
+                    if (nextButton) nextButton.onclick = nextSlide;
+                    if (prevButton) {
+                        prevButton.onclick = function() {
+                            var currentSlide = track.querySelector(".current-slide") || slides[0];
+                            var prevSlide = currentSlide.previousElementSibling || slides[slides.length - 1];
+                            var currentDot = dotsNav ? dotsNav.querySelector(".current-slide") : null;
+                            var prevIndex = slides.indexOf(prevSlide);
+                            var targetDot = dots[prevIndex];
+
+                            moveToSlide(track, currentSlide, prevSlide);
+                            updateDots(currentDot, targetDot);
+                        };
+                    }
+
+                    if (dotsNav) {
+                        dotsNav.onclick = function(e) {
+                            var targetDot = e.target.closest("button");
+                            if (!targetDot) return;
+
+                            var currentSlide = track.querySelector(".current-slide") || slides[0];
+                            var currentDot = dotsNav.querySelector(".current-slide");
+                            var targetIndex = dots.indexOf(targetDot);
+                            var targetSlide = slides[targetIndex];
+
+                            moveToSlide(track, currentSlide, targetSlide);
+                            updateDots(currentDot, targetDot);
+                        };
+                    }
+
+                    setInterval(nextSlide, 5000);
+                }
+            };
+
+            CarouselManager.init();
+            
+            // Header scroll logic
+            window.onscroll = function() {
+                var header = document.querySelector('.header');
+                if (header) {
+                    if (window.scrollY > 50) {
+                        header.classList.add('header--scrolled');
+                    } else {
+                        header.classList.remove('header--scrolled');
+                    }
+                }
+            };
+        })();
+    </script>
+</body>
+</html>
