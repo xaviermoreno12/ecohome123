@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Gratuita de Vivienda Modular | Eco Home Fence</title>
+    <meta name="description" content="Descubrí cómo tener tu vivienda modular premium en menos de 4 meses. Recibí la guía gratuita ahora.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #85c370;
+            --primary-dark: #6eb05a;
+            --dark: #1a1a1a;
+            --text-muted: #6b7280;
+            --bg-creme: #f9f9f7;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-creme);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        /* ── Layout ── */
+        .landing {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        /* ── Left: imagen + copy ── */
+        .landing__left {
+            position: relative;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 48px;
+            overflow: hidden;
+        }
+
+        .landing__bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+        }
+
+        .landing__logo {
+            position: absolute;
+            top: 32px;
+            left: 48px;
+            z-index: 2;
+        }
+
+        .landing__logo img {
+            height: 56px;
+            width: auto;
+        }
+
+        .landing__copy {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .landing__tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-family: var(--font-title);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .landing__headline {
+            font-family: var(--font-title);
+            font-size: 2.6rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .landing__headline span {
+            color: var(--primary);
+        }
+
+        .landing__bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .landing__bullets li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.4;
+        }
+
+        .landing__bullets li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ── Right: formulario ── */
+        .landing__right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 40px;
+            background: white;
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .form-box__eyebrow {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .form-box__title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            line-height: 1.25;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-box__sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--dark);
+            background: #fafafa;
+            transition: border-color 0.2s;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .field input::placeholder {
+            color: #b0b7c3;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 176, 90, 0.35);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-footer {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: #9ca3af;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .form-error {
+            display: none;
+            background: #fee2e2;
+            color: #b91c1c;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .landing {
+                grid-template-columns: 1fr;
+            }
+
+            .landing__left {
+                min-height: 320px;
+                padding: 32px 24px;
+            }
+
+            .landing__logo {
+                top: 20px;
+                left: 24px;
+            }
+
+            .landing__logo img { height: 44px; }
+
+            .landing__headline { font-size: 1.9rem; }
+
+            .landing__right {
+                padding: 36px 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="landing">
+
+    <!-- Izquierda: imagen + propuesta de valor -->
+    <div class="landing__left">
+        <img src="fotos recursos/28.jfif" alt="Vivienda Eco Home Fence" class="landing__bg">
+
+        <div class="landing__logo">
+            <img src="logo.png" alt="Eco Home Fence">
+        </div>
+
+        <div class="landing__copy">
+            <span class="landing__tag">Guía Gratuita</span>
+            <h1 class="landing__headline">
+                Tu vivienda<br>modular premium<br>en <span>menos de 4 meses</span>
+            </h1>
+            <ul class="landing__bullets">
+                <li>Qué incluye cada modelo (ECO 37, 57 y 75 m²)</li>
+                <li>Plazos reales de fabricación, envío e instalación</li>
+                <li>Cómo funciona el sistema de pagos en cuotas</li>
+                <li>Por qué no necesitás obra tradicional ni permiso de construcción</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Derecha: formulario -->
+    <div class="landing__right">
+        <div class="form-box">
+            <p class="form-box__eyebrow">100% gratuito</p>
+            <h2 class="form-box__title">Recibí la guía en tu correo ahora</h2>
+            <p class="form-box__sub">Completá tus datos y te la enviamos al instante.</p>
+
+            <div class="form-error" id="formError">
+                Hubo un error al enviar el formulario. Por favor intentá de nuevo.
+            </div>
+
+            <form id="leadForm" novalidate>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="field">
+                        <label for="apellido">Apellido *</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="celular">Celular / WhatsApp *</label>
+                    <input type="tel" id="celular" name="celular" placeholder="Ej: 2262 123456" required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="tucorreo@gmail.com" required>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    Enviar la guía gratuita →
+                </button>
+            </form>
+
+            <p class="form-footer">
+                🔒 Tus datos están seguros. No enviamos spam.<br>
+                Al continuar aceptás recibir información de Eco Home Fence.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var WEBHOOK_URL = 'https://n8n.srv1538677.hstgr.cloud/webhook/eco-home-lead';
+
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var nombre   = document.getElementById('nombre').value.trim();
+        var apellido = document.getElementById('apellido').value.trim();
+        var celular  = document.getElementById('celular').value.trim();
+        var email    = document.getElementById('email').value.trim();
+        var errorEl  = document.getElementById('formError');
+        var btn      = document.getElementById('submitBtn');
+
+        errorEl.style.display = 'none';
+
+        if (!nombre || !apellido || !celular || !email) {
+            errorEl.textContent = 'Por favor completá todos los campos.';
+            errorEl.style.display = 'block';
+            return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorEl.textContent = 'El email no es válido.';
+            errorEl.style.display = 'block';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nombre:   nombre,
+                apellido: apellido,
+                celular:  celular,
+                email:    email,
+                fuente:   'landing-instagram',
+                fecha:    new Date().toISOString()
+            })
+        })
+        .then(function(res) {
+            if (res.ok) {
+                window.location.href = 'thank-you.html';
+            } else {
+                throw new Error('Error del servidor');
+            }
+        })
+        .catch(function() {
+            btn.disabled = false;
+            btn.textContent = 'Enviar la guía gratuita →';
+            errorEl.textContent = 'Hubo un error. Por favor intentá de nuevo.';
+            errorEl.style.display = 'block';
+        });
+    });
+</script>
+
+</body>
+</html>

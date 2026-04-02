@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Leads | Eco Home Fence</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #85c370;
+            --primary-dark: #6eb05a;
+            --primary-light: #ecfce7;
+            --dark: #1a1a1a;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Estados */
+            --nuevo:       #dbeafe; --nuevo-txt: #1e40af;
+            --contactado:  #fef9c3; --contactado-txt: #854d0e;
+            --interesado:  #dcfce7; --interesado-txt: #15803d;
+            --vendido:     #85c370; --vendido-txt: #fff;
+            --descartado:  #fee2e2; --descartado-txt: #b91c1c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        .topbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topbar__brand img {
+            height: 40px;
+            width: auto;
+        }
+
+        .topbar__title {
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .topbar__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-refresh {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-refresh:hover { background: var(--primary-dark); }
+
+        .last-updated {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* ── Main ── */
+        .main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 28px 24px;
+        }
+
+        /* ── KPIs ── */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid var(--border);
+        }
+
+        .kpi-card__label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .kpi-card__value {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .kpi-card__sub {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        .kpi-card--green .kpi-card__value { color: var(--primary-dark); }
+
+        /* ── Filtros ── */
+        .filters {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            background: var(--white);
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filter-select {
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            background: var(--white);
+            cursor: pointer;
+        }
+
+        .filter-select:focus { outline: none; border-color: var(--primary); }
+
+        /* ── Tabla ── */
+        .table-card {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .table-card__header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-card__header h2 {
+            font-family: var(--font-title);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .count-badge {
+            background: var(--bg);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background: var(--bg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--muted);
+            padding: 11px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tr:hover td { background: #fafafa; }
+
+        .cell-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .cell-email a {
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .cell-email a:hover { text-decoration: underline; }
+
+        .cell-phone a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .badge-estado {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-Nuevo       { background: var(--nuevo);       color: var(--nuevo-txt); }
+        .badge-Contactado  { background: var(--contactado);  color: var(--contactado-txt); }
+        .badge-Interesado  { background: var(--interesado);  color: var(--interesado-txt); }
+        .badge-Vendido     { background: var(--vendido);     color: var(--vendido-txt); }
+        .badge-Descartado  { background: var(--descartado);  color: var(--descartado-txt); }
+
+        .badge-fuente {
+            background: #f3f4f6;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* ── Loading / Error ── */
+        .state-msg {
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--muted);
+        }
+
+        .state-msg .icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .state-msg p { font-size: 0.95rem; }
+
+        .spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Config modal ── */
+        .config-btn {
+            background: none;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 14px;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--muted);
+            transition: border-color 0.2s;
+        }
+
+        .config-btn:hover { border-color: var(--primary); color: var(--primary-dark); }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            width: 480px;
+            max-width: 95vw;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .modal h3 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .modal p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal .field {
+            margin-bottom: 16px;
+        }
+
+        .modal label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+        }
+
+        .modal input:focus { outline: none; border-color: var(--primary); }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        .btn-cancel {
+            padding: 10px 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            background: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .btn-save {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-save:hover { background: var(--primary-dark); }
+
+        @media (max-width: 640px) {
+            .topbar { padding: 0 16px; }
+            .main { padding: 16px; }
+            .kpi-card__value { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="topbar">
+    <div class="topbar__brand">
+        <img src="logo.png" alt="Eco Home Fence">
+        <span class="topbar__title">Panel de Leads</span>
+    </div>
+    <div class="topbar__right">
+        <span class="last-updated" id="lastUpdated">—</span>
+        <button class="config-btn" onclick="openConfig()">⚙ Configurar</button>
+        <button class="btn-refresh" onclick="loadLeads()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                <path d="M21 3v5h-5"/>
+                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                <path d="M3 21v-5h5"/>
+            </svg>
+            Actualizar
+        </button>
+    </div>
+</header>
+
+<!-- Main -->
+<main class="main">
+
+    <!-- KPIs -->
+    <div class="kpis" id="kpis">
+        <div class="kpi-card">
+            <div class="kpi-card__label">Total Leads</div>
+            <div class="kpi-card__value" id="kpi-total">—</div>
+            <div class="kpi-card__sub">formularios recibidos</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-card__label">Nuevos</div>
+            <div class="kpi-card__value" id="kpi-nuevos">—</div>
+            <div class="kpi-card__sub">sin contactar</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-card__label">Interesados</div>
+            <div class="kpi-card__value" id="kpi-interesados">—</div>
+            <div class="kpi-card__sub">en proceso</div>
+        </div>
+        <div class="kpi-card kpi-card--green">
+            <div class="kpi-card__label">Vendidos</div>
+            <div class="kpi-card__value" id="kpi-vendidos">—</div>
+            <div class="kpi-card__sub">¡clientes!</div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters">
+        <input type="text" class="filter-input" id="searchInput"
+               placeholder="Buscar por nombre, email o celular..."
+               oninput="filterTable()">
+        <select class="filter-select" id="filterEstado" onchange="filterTable()">
+            <option value="">Todos los estados</option>
+            <option value="Nuevo">Nuevo</option>
+            <option value="Contactado">Contactado</option>
+            <option value="Interesado">Interesado</option>
+            <option value="Vendido">Vendido</option>
+            <option value="Descartado">Descartado</option>
+        </select>
+        <select class="filter-select" id="filterFuente" onchange="filterTable()">
+            <option value="">Todas las fuentes</option>
+            <option value="landing-instagram">Instagram</option>
+        </select>
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-card">
+        <div class="table-card__header">
+            <h2>Registros</h2>
+            <span class="count-badge" id="countBadge">0 leads</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Celular</th>
+                        <th>Estado</th>
+                        <th>Fuente</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="leadsBody">
+                    <tr>
+                        <td colspan="7">
+                            <div class="state-msg">
+                                <div class="icon">⚙</div>
+                                <p>Hacé clic en <strong>Configurar</strong> para ingresar<br>tu API Key y los datos de Airtable.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+<!-- Modal de configuración -->
+<div class="modal-overlay" id="configModal">
+    <div class="modal">
+        <h3>Configurar conexión con Airtable</h3>
+        <p>Estos datos se guardan solo en tu navegador (localStorage). No se envían a ningún servidor.</p>
+        <div class="field">
+            <label>API Token de Airtable</label>
+            <input type="password" id="cfg-token" placeholder="patXXXXXXXXXXXXXX.xxx...">
+        </div>
+        <div class="field">
+            <label>Base ID</label>
+            <input type="text" id="cfg-base" placeholder="appXXXXXXXXXXXXXX">
+        </div>
+        <div class="field">
+            <label>Nombre de la tabla</label>
+            <input type="text" id="cfg-table" placeholder="Leads Eco Home" value="Leads Eco Home">
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeConfig()">Cancelar</button>
+            <button class="btn-save" onclick="saveConfig()">Guardar y cargar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var allRecords = [];
+
+    // ── Config ──────────────────────────────────────────
+    function openConfig() {
+        document.getElementById('cfg-token').value = localStorage.getItem('at_token') || '';
+        document.getElementById('cfg-base').value  = localStorage.getItem('at_base')  || '';
+        document.getElementById('cfg-table').value = localStorage.getItem('at_table') || 'Leads Eco Home';
+        document.getElementById('configModal').classList.add('open');
+    }
+
+    function closeConfig() {
+        document.getElementById('configModal').classList.remove('open');
+    }
+
+    function saveConfig() {
+        localStorage.setItem('at_token', document.getElementById('cfg-token').value.trim());
+        localStorage.setItem('at_base',  document.getElementById('cfg-base').value.trim());
+        localStorage.setItem('at_table', document.getElementById('cfg-table').value.trim() || 'Leads Eco Home');
+        closeConfig();
+        loadLeads();
+    }
+
+    // ── Fetch leads desde Airtable ──────────────────────
+    function loadLeads() {
+        var token = localStorage.getItem('at_token');
+        var base  = localStorage.getItem('at_base');
+        var table = localStorage.getItem('at_table') || 'Leads Eco Home';
+
+        if (!token || !base) {
+            openConfig();
+            return;
+        }
+
+        var tbody = document.getElementById('leadsBody');
+        tbody.innerHTML = '<tr><td colspan="7"><div class="state-msg"><div class="spinner"></div><p>Cargando leads...</p></div></td></tr>';
+
+        var url = 'https://api.airtable.com/v0/' + encodeURIComponent(base) + '/' + encodeURIComponent(table) +
+                  '?sort[0][field]=Fecha&sort[0][direction]=desc&pageSize=100';
+
+        fetch(url, {
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function(res) {
+            if (!res.ok) throw new Error('Error ' + res.status + ': verificá el API token y el Base ID.');
+            return res.json();
+        })
+        .then(function(data) {
+            allRecords = (data.records || []).map(function(r) { return r.fields; });
+            renderTable(allRecords);
+            updateKPIs(allRecords);
+            document.getElementById('lastUpdated').textContent =
+                'Actualizado: ' + new Date().toLocaleTimeString('es-AR', {hour: '2-digit', minute: '2-digit'});
+        })
+        .catch(function(err) {
+            tbody.innerHTML = '<tr><td colspan="7"><div class="state-msg"><div class="icon">⚠️</div><p>' + err.message + '</p></div></td></tr>';
+        });
+    }
+
+    // ── Render tabla ────────────────────────────────────
+    function renderTable(records) {
+        var tbody = document.getElementById('leadsBody');
+        document.getElementById('countBadge').textContent = records.length + ' lead' + (records.length !== 1 ? 's' : '');
+
+        if (records.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7"><div class="state-msg"><div class="icon">📭</div><p>No hay leads con esos filtros.</p></div></td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = records.map(function(f) {
+            var estado  = f.Estado  || 'Nuevo';
+            var fuente  = f.Fuente  || '—';
+            var fecha   = f.Fecha   ? formatDate(f.Fecha) : '—';
+            var nombre  = escHtml(f.Nombre   || '—');
+            var apellido = escHtml(f.Apellido || '—');
+            var email   = escHtml(f.Email    || '—');
+            var celular = escHtml(f.Celular   || '—');
+
+            return '<tr>' +
+                '<td class="cell-name">' + nombre + '</td>' +
+                '<td>' + apellido + '</td>' +
+                '<td class="cell-email"><a href="mailto:' + email + '">' + email + '</a></td>' +
+                '<td class="cell-phone"><a href="https://wa.me/' + celular.replace(/[^0-9]/g,'') + '" target="_blank">📱 ' + celular + '</a></td>' +
+                '<td><span class="badge-estado badge-' + escHtml(estado) + '">' + escHtml(estado) + '</span></td>' +
+                '<td><span class="badge-fuente">' + escHtml(fuente.replace('landing-', '')) + '</span></td>' +
+                '<td>' + fecha + '</td>' +
+            '</tr>';
+        }).join('');
+    }
+
+    // ── KPIs ────────────────────────────────────────────
+    function updateKPIs(records) {
+        document.getElementById('kpi-total').textContent       = records.length;
+        document.getElementById('kpi-nuevos').textContent      = records.filter(function(r){ return (r.Estado||'Nuevo') === 'Nuevo'; }).length;
+        document.getElementById('kpi-interesados').textContent = records.filter(function(r){ return r.Estado === 'Interesado'; }).length;
+        document.getElementById('kpi-vendidos').textContent    = records.filter(function(r){ return r.Estado === 'Vendido'; }).length;
+    }
+
+    // ── Filtros ─────────────────────────────────────────
+    function filterTable() {
+        var search  = document.getElementById('searchInput').value.toLowerCase();
+        var estado  = document.getElementById('filterEstado').value;
+        var fuente  = document.getElementById('filterFuente').value;
+
+        var filtered = allRecords.filter(function(f) {
+            var text = [(f.Nombre||''), (f.Apellido||''), (f.Email||''), (f.Celular||'')].join(' ').toLowerCase();
+            var matchSearch = !search || text.includes(search);
+            var matchEstado = !estado || (f.Estado || 'Nuevo') === estado;
+            var matchFuente = !fuente || (f.Fuente || '') === fuente;
+            return matchSearch && matchEstado && matchFuente;
+        });
+
+        renderTable(filtered);
+    }
+
+    // ── Helpers ─────────────────────────────────────────
+    function formatDate(iso) {
+        try {
+            return new Date(iso).toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        } catch(e) { return iso; }
+    }
+
+    function escHtml(str) {
+        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ── Auto-load si ya hay config ───────────────────────
+    window.onload = function() {
+        if (localStorage.getItem('at_token') && localStorage.getItem('at_base')) {
+            loadLeads();
+        }
+    };
+</script>
+
+</body>
+</html>
