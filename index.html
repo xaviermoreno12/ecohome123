@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco Home France | Viviendas Modulares Premium en Necochea</title>
-    <meta name="description" content="Venta de casas modulares premium importadas de China. Calidad arquitectonica lista para habitar en Necochea, Buenos Aires.">
+    <title>Eco Home Fence | Viviendas Modulares Premium</title>
+    <meta name="description" content="Viviendas modulares de calidad premium. Instalación en menos de 24 horas. Mijas, Málaga.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="#" class="logo">ECO<span>HOME</span></a>
+                <a href="#" class="logo"><img src="logo.png" alt="Eco Home Fence" class="logo__img"></a>
                 <ul class="nav__list">
                     <li><a href="#filosofia" class="nav__link">Filosofía</a></li>
                     <li><a href="#ventajas" class="nav__link">Ventajas</a></li>
@@ -34,12 +34,14 @@
         <div class="container">
             <div class="hero__content">
                 <div class="hero__text">
-                    <h1 class="hero__title" style="font-size: 3rem; line-height: 1.2;">VIVIENDAS MÓVILES Y EXTENSIBLES <br><span style="color: var(--primary);">DE CALIDAD PREMIUM</span></h1>
-                    <p class="hero__subtitle" style="margin-top: 15px;">
+                    <span class="hero__badge">Mijas, Málaga · Elite Properties Spain</span>
+                    <h1 class="hero__title">Viviendas Móviles y Extensibles <span>de Calidad Premium</span></h1>
+                    <p class="hero__subtitle">
                         Viviendas expandibles con estándares de construcción mejorados. La experiencia del lujo aplicada a la eficiencia.
                     </p>
-                    <div class="hero__actions" style="margin-top: 30px;">
+                    <div class="hero__actions">
                         <a href="#modelos" class="btn btn--primary">Descubrir Modelos</a>
+                        <a href="#contacto" class="btn btn--secondary">Solicitar Info</a>
                     </div>
                 </div>
                 <div class="hero__image-container">
@@ -85,63 +87,64 @@
     </section>
 
     <!-- 01 Filosofia -->
-    <section id="filosofia" class="about" style="background: #fff; padding: 80px 0;">
+    <section id="filosofia" style="background: var(--bg-white);">
         <div class="container">
-            <div class="contact-layout">
+            <div class="filosofia-layout">
                 <div>
-                    <h2 class="section-title">01. La experiencia del lujo aplicada a la eficiencia</h2>
-                    <p style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 600; color: var(--primary-dark);">
+                    <span class="section-tag">01. Nuestra Filosofía</span>
+                    <h2 class="section-title">La experiencia del lujo aplicada a la eficiencia</h2>
+                    <p style="margin-bottom: 16px; font-size: 1.05rem; font-weight: 600; color: var(--primary-dark);">
                         No somos meros intermediarios. Somos constructores.
                     </p>
-                    <p style="margin-bottom: 20px;">
-                        Como división de <strong>Elite Properties Spain</strong>, nuestra misión es clara: democratizar el acceso a una vivienda de calidad sin renunciar a la excelencia constructiva. Hemos analizado la base de las casas extensibles estándar y la hemos rediseñado desde cero, aplicando mejoras de nuestras villas de lujo.
+                    <p style="margin-bottom: 20px; color: var(--text-muted);">
+                        Como división de <strong>Elite Properties Spain</strong>, nuestra misión es democratizar el acceso a una vivienda de calidad sin renunciar a la excelencia constructiva. Hemos rediseñado las casas extensibles estándar desde cero, aplicando mejoras de nuestras villas de lujo.
                     </p>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <li style="margin-bottom: 12px;">🌡️ <strong>Confort Térmico Superior:</strong> Aislamiento reforzado para eficiencia energética.</li>
-                        <li style="margin-bottom: 12px;">🏗️ <strong>Durabilidad Estructural:</strong> Soluciones constructivas probadas en alta gama.</li>
+                    <ul class="filosofia-list">
+                        <li>🌡️ <strong>Confort Térmico Superior:</strong> Aislamiento reforzado para eficiencia energética.</li>
+                        <li>🏗️ <strong>Durabilidad Estructural:</strong> Soluciones constructivas probadas en alta gama.</li>
                         <li>✨ <strong>Calidad Percibida:</strong> Carpintería y acabados seleccionados bajo criterio de lujo.</li>
                     </ul>
                 </div>
-                <div class="hero__image-container" style="display: grid; grid-template-rows: 1fr 1fr; gap: 20px;">
-                    <img src="fotos recursos/3.jfif" alt="Vivienda Eco Elite Exterior" style="border-radius: 16px; width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-medium);">
-                    <img src="fotos recursos/2.jfif" alt="Vivienda Eco Elite Interior" style="border-radius: 16px; width: 100%; height: 250px; object-fit: cover; box-shadow: var(--shadow-medium);">
+                <div class="filosofia-images">
+                    <img src="fotos recursos/3.jfif" alt="Vivienda Eco Elite Exterior">
+                    <img src="fotos recursos/2.jfif" alt="Vivienda Eco Elite Interior">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 02 Ventajas -->
-    <section id="ventajas" class="about" style="background: var(--bg-gray); padding: 80px 0;">
+    <section id="ventajas" style="background: var(--bg-gray);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">02. Ventajas Únicas</h2>
+                <span class="section-tag">02. Por qué elegirnos</span>
+                <h2 class="section-title">Ventajas Únicas</h2>
                 <p class="section-subtitle">¿Por qué nuestro sistema es diferente?</p>
             </div>
-            
-            <div class="models__grid" style="margin-top: 40px;">
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Instalación Exprés</h3>
+            <div class="ventajas-grid">
+                <div class="ventaja-card">
+                    <h3>⚡ Instalación Exprés</h3>
                     <p>Montaje en menos de 24 horas una vez en destino, con mínima intervención en el terreno.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Móvil y Reubicable</h3>
+                <div class="ventaja-card">
+                    <h3>🔄 Móvil y Reubicable</h3>
                     <p>La casa se puede plegar y trasladar a otra ubicación si cambian sus planes o vende la parcela.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Sin Obras Pesadas</h3>
+                <div class="ventaja-card">
+                    <h3>🏗️ Sin Obras Pesadas</h3>
                     <p>No requiere estructura de hormigón tradicional. Menos licencias, menos suciedad y menos molestias.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Aislamiento y Costes</h3>
-                    <p>Aislamiento superior con paneles de núcleo térmico. Precio cerrado sin sorpresas ni sobrecostes.</p>
+                <div class="ventaja-card">
+                    <h3>🌡️ Aislamiento Superior</h3>
+                    <p>Paneles de núcleo térmico. Precio cerrado sin sorpresas ni sobrecostes.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Llave en Mano</h3>
+                <div class="ventaja-card">
+                    <h3>🔑 Llave en Mano</h3>
                     <p>Disfrute de su vivienda completamente equipada con cocina y baño desde el primer minuto.</p>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-soft);">
-                    <h3 style="margin-bottom: 15px; color: var(--primary-dark);">Diseño Moderno</h3>
-                    <p>Acabados exteriores e interiores de alta estética que compiten directamente con construcciones tradicionales de lujo.</p>
+                <div class="ventaja-card">
+                    <h3>✨ Diseño Moderno</h3>
+                    <p>Acabados de alta estética que compiten directamente con construcciones tradicionales de lujo.</p>
                 </div>
             </div>
         </div>
@@ -151,6 +154,7 @@
     <section id="modelos" class="models">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">03. Nuestros Modelos</span>
                 <h2 class="section-title">Encuentra tu espacio ideal</h2>
                 <p class="section-subtitle">Serie ECO: Optimizada, elegante y lista para usar.</p>
             </div>
@@ -199,37 +203,38 @@
     </section>
 
     <!-- Acabados -->
-    <section id="calidades" class="about" style="background: #fff; padding: 80px 0;">
+    <section id="calidades" style="background: var(--bg-white);">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">04. Acabados</span>
                 <h2 class="section-title">Acabados y Calidades</h2>
                 <p class="section-subtitle">Los detalles que marcan la diferencia. Soluciones premium incluidas.</p>
             </div>
-            
-            <div class="models__grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🍳</div>
-                    <h3 style="color: var(--primary-dark);">Cocinas Equipadas</h3>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Módulos de alta resistencia, encimera, fregadero y grifería de calidad ya incluidos e instalados en los modelos.</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-item__icon">🍳</div>
+                    <h3>Cocinas Equipadas</h3>
+                    <p>Módulos de alta resistencia, encimera, fregadero y grifería de calidad ya incluidos e instalados en los modelos.</p>
                 </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🚿</div>
-                    <h3 style="color: var(--primary-dark);">Baños Completos</h3>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Ducha con mampara, inodoro, lavabo con mueble y revestimientos 100% resistentes a la humedad, con ventilación e iluminación.</p>
+                <div class="feature-item">
+                    <div class="feature-item__icon">🚿</div>
+                    <h3>Baños Completos</h3>
+                    <p>Ducha con mampara, inodoro, lavabo con mueble y revestimientos 100% resistentes a la humedad.</p>
                 </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🚪</div>
-                    <h3 style="color: var(--primary-dark);">Carpintería Superior</h3>
-                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">Ventanas con perfilería premium y acristalamiento optimizado para máximo confort térmico y acústico en toda la casa.</p>
+                <div class="feature-item">
+                    <div class="feature-item__icon">🚪</div>
+                    <h3>Carpintería Superior</h3>
+                    <p>Ventanas con perfilería premium y acristalamiento optimizado para máximo confort térmico y acústico.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Plazos -->
-    <section id="plazos" class="about" style="background: var(--bg-gray); padding: 80px 0;">
+    <section id="plazos" style="background: var(--bg-gray);">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">05. Proceso</span>
                 <h2 class="section-title">Plazos para la entrega</h2>
                 <p class="section-subtitle">Tu casa, paso a paso, con total transparencia.</p>
             </div>
@@ -342,7 +347,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer__logo">ECO<span>HOME</span></p>
+            <p class="footer__logo"><img src="logo.png" alt="Eco Home Fence" class="footer__logo-img"></p>
             <p class="footer__copy">&copy; 2026 Eco Home Fence. Empresa filial de Elite Properties Spain.</p>
         </div>
     </footer>
