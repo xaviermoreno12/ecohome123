@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Cargando... | Eco Home Fence</title>
+    <meta name="description" id="pageMeta" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .post-hero {
+            position: relative;
+            height: 420px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+        .post-hero__img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(31,42,30,0.92) 0%, rgba(31,42,30,0.3) 60%, transparent 100%);
+        }
+        .post-hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 0 48px;
+            width: 100%;
+        }
+        .post-hero__keyword {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+        .post-hero__title {
+            color: #fff;
+            font-size: 2.8rem;
+            line-height: 1.15;
+            max-width: 780px;
+        }
+        .post-hero__meta {
+            margin-top: 16px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.88rem;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ── Article Body ── */
+        .post-body {
+            background: var(--bg-white);
+            padding: 64px 0 80px;
+        }
+        .post-content {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+        .post-content h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin: 48px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bg-gray);
+        }
+        .post-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin: 32px 0 12px;
+        }
+        .post-content p { margin-bottom: 20px; }
+        .post-content ul, .post-content ol {
+            margin: 0 0 20px 20px;
+        }
+        .post-content li { margin-bottom: 8px; }
+        .post-content strong { color: var(--dark); }
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+        .post-content th {
+            background: var(--bg-gray);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--primary-light);
+        }
+        .post-content td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--bg-gray);
+        }
+        .post-content blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 24px 0;
+            padding: 16px 24px;
+            background: var(--bg-gray);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* ── CTA Box ── */
+        .post-cta {
+            margin-top: 56px;
+            background: var(--dark);
+            border-radius: var(--radius-lg);
+            padding: 40px 48px;
+            text-align: center;
+        }
+        .post-cta h3 { color: #fff; font-size: 1.6rem; margin-bottom: 12px; }
+        .post-cta p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+        .post-cta .btn { margin: 0 8px; }
+
+        /* ── Back Link ── */
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+            transition: var(--transition);
+        }
+        .post-back:hover { gap: 12px; color: var(--primary-dark); }
+
+        /* ── Loading ── */
+        .post-loading {
+            text-align: center;
+            padding: 120px 24px;
+            color: var(--text-muted);
+        }
+        .post-loading .blog-spinner {
+            width: 40px; height: 40px;
+            border: 3px solid var(--bg-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin: 0 auto 18px;
+        }
+
+        @media (max-width: 768px) {
+            .post-hero { height: 320px; }
+            .post-hero__title { font-size: 2rem; }
+            .post-content { padding: 0 8px; }
+            .post-cta { padding: 28px 24px; }
+        }
+    </style>
+    <script type="application/ld+json" id="schemaArticle"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo"><img src="logo.png" alt="Eco Home Fence" class="logo__img"></a>
+                <ul class="nav__list">
+                    <li><a href="index.html#modelos" class="nav__link">Modelos</a></li>
+                    <li><a href="index.html#ventajas" class="nav__link">Ventajas</a></li>
+                    <li><a href="index.html#plazos" class="nav__link">Plazos</a></li>
+                    <li><a href="blog.html" class="nav__link" style="color:#fff;">Blog</a></li>
+                </ul>
+                <a href="index.html#contacto" class="btn btn--primary" style="padding: 12px 24px;">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content injected by JS -->
+    <main id="postMain">
+        <div class="post-loading">
+            <div class="blog-spinner"></div>
+            <p>Cargando artículo...</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__logo"><img src="logo.png" alt="Eco Home Fence" class="footer__logo-img"></p>
+            <p class="footer__copy">&copy; 2026 Eco Home Fence. Empresa filial de Elite Properties Spain.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/34619846388" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.564-10.563 5.826 0 10.564 4.741 10.564 10.564 0 5.824-4.74 10.564-10.564 10.564z"/></svg>
+    </a>
+
+<script>
+    var BLOG_WEBHOOK = 'https://n8n.srv1538677.hstgr.cloud/webhook/blog-post';
+
+    function getSlug() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('slug');
+    }
+
+    function loadPost() {
+        var slug = getSlug();
+        if (!slug) { window.location.href = 'blog.html'; return; }
+
+        fetch(BLOG_WEBHOOK + '?slug=' + encodeURIComponent(slug))
+        .then(function(res) {
+            if (!res.ok) throw new Error('Not found');
+            return res.json();
+        })
+        .then(function(p) {
+            if (!p || !p.titulo) throw new Error('Not found');
+
+            // Update page meta
+            document.getElementById('pageTitle').textContent = (p.meta_title || p.titulo) + ' | Eco Home Fence';
+            document.getElementById('pageMeta').setAttribute('content', p.meta_description || p.extracto || '');
+
+            // Schema markup
+            var schema = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": p.titulo,
+                "description": p.meta_description || p.extracto || '',
+                "image": p.imagen_portada || '',
+                "datePublished": p.fecha_publicacion || '',
+                "author": { "@type": "Organization", "name": "Eco Home Fence" },
+                "publisher": { "@type": "Organization", "name": "Eco Home Fence" }
+            };
+            document.getElementById('schemaArticle').textContent = JSON.stringify(schema);
+
+            var fecha = p.fecha_publicacion ? formatDate(p.fecha_publicacion) : '';
+            var img = p.imagen_portada || 'fotos recursos/28.jfif';
+
+            document.getElementById('postMain').innerHTML =
+                '<section class="post-hero">' +
+                    '<img class="post-hero__img" src="' + esc(img) + '" alt="' + esc(p.titulo) + '">' +
+                    '<div class="post-hero__overlay"></div>' +
+                    '<div class="container post-hero__content">' +
+                        (p.keyword_principal ? '<span class="post-hero__keyword">' + esc(p.keyword_principal) + '</span>' : '') +
+                        '<h1 class="post-hero__title">' + esc(p.titulo) + '</h1>' +
+                        '<div class="post-hero__meta">' +
+                            (fecha ? '<span>📅 ' + fecha + '</span>' : '') +
+                            '<span>✍️ Eco Home Fence</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</section>' +
+                '<section class="post-body">' +
+                    '<div class="container">' +
+                        '<div class="post-content">' +
+                            '<a href="blog.html" class="post-back">← Volver al Blog</a>' +
+                            (p.contenido || '<p>Contenido no disponible.</p>') +
+                            '<div class="post-cta">' +
+                                '<h3>¿Te interesa saber más?</h3>' +
+                                '<p>Pide una propuesta personalizada sin compromiso.</p>' +
+                                '<a href="index.html#contacto" class="btn btn--primary">Contactar</a>' +
+                                '<a href="https://wa.me/34619846388" class="btn btn--accent" target="_blank">WhatsApp</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</section>';
+        })
+        .catch(function() {
+            document.getElementById('postMain').innerHTML =
+                '<div class="post-loading" style="padding:160px 24px;">' +
+                    '<div style="font-size:3rem;margin-bottom:16px;">🔍</div>' +
+                    '<p>Artículo no encontrado.</p>' +
+                    '<a href="blog.html" class="post-back" style="margin-top:20px;">← Volver al Blog</a>' +
+                '</div>';
+        });
+    }
+
+    function formatDate(iso) {
+        try {
+            return new Date(iso).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch(e) { return iso; }
+    }
+
+    function esc(s) {
+        return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    window.onscroll = function() {
+        var h = document.querySelector('.header');
+        if (h) h.classList.toggle('header--scrolled', window.scrollY > 50);
+    };
+
+    loadPost();
+</script>
+</body>
+</html>

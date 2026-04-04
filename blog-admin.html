@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión del Blog | Eco Home Fence</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F6743; --primary-dark: #3a4f31; --primary-light: #6d8a60;
+            --dark: #1F2A1E; --accent: #8B5A2B;
+            --muted: #6b7280; --border: #e5e7eb; --bg: #f3f4f6; --white: #fff;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', sans-serif;
+            --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: var(--font-body); background: var(--bg); color: var(--dark); min-height: 100vh; }
+
+        /* Topbar */
+        .topbar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .topbar__left { display: flex; align-items: center; gap: 12px; }
+        .topbar__left img { height: 36px; }
+        .topbar__title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; }
+        .topbar__right { display: flex; gap: 10px; align-items: center; }
+
+        /* Buttons */
+        .btn-sm { padding: 8px 16px; border-radius: 8px; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+        .btn-green { background: var(--primary); color: #fff; }
+        .btn-green:hover { background: var(--primary-dark); }
+        .btn-outline { background: none; border: 1.5px solid var(--border); color: var(--muted); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); }
+        .btn-danger { background: #fee2e2; color: #b91c1c; }
+        .btn-danger:hover { background: #fecaca; }
+
+        /* Main */
+        .main { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+        /* Stats */
+        .stats { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+        .stat { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; flex: 1; min-width: 140px; }
+        .stat__label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 4px; }
+        .stat__val { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; }
+        .stat--green .stat__val { color: var(--primary); }
+
+        /* Table */
+        .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+        .card__head { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .card__head h2 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: var(--bg); padding: 10px 14px; text-align: left; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); border-bottom: 1px solid var(--border); }
+        td { padding: 12px 14px; border-bottom: 1px solid #f3f4f6; vertical-align: middle; }
+        tr:hover td { background: #fafafa; }
+
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+        .badge-pub { background: #dcfce7; color: #15803d; }
+        .badge-draft { background: #fef9c3; color: #854d0e; }
+        .badge-arch { background: #f3f4f6; color: #6b7280; }
+
+        .actions { display: flex; gap: 6px; }
+        .actions button { padding: 4px 10px; font-size: 0.75rem; }
+
+        /* Modal */
+        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 40px 16px; }
+        .overlay.open { display: flex; }
+        .modal { background: var(--white); border-radius: 16px; padding: 32px; width: 720px; max-width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .modal h3 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 20px; }
+        .field { margin-bottom: 16px; }
+        .field label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 5px; color: var(--dark); }
+        .field input, .field textarea, .field select { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; }
+        .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--primary); }
+        .field textarea { min-height: 200px; resize: vertical; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .modal-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+
+        /* Config modal */
+        .cfg-modal .field input { font-size: 0.85rem; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .field-row { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; }
+            .topbar { padding: 0 12px; }
+        }
+
+        /* Loading */
+        .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 40px auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar__left">
+        <img src="logo.png" alt="Eco Home Fence">
+        <span class="topbar__title">Gestión del Blog</span>
+    </div>
+    <div class="topbar__right">
+        <button class="btn-sm btn-outline" onclick="openConfig()">⚙ Configurar</button>
+        <button class="btn-sm btn-green" onclick="openEditor()">+ Nuevo Post</button>
+    </div>
+</header>
+
+<main class="main">
+    <div class="stats">
+        <div class="stat"><div class="stat__label">Total Posts</div><div class="stat__val" id="s-total">—</div></div>
+        <div class="stat stat--green"><div class="stat__label">Publicados</div><div class="stat__val" id="s-pub">—</div></div>
+        <div class="stat"><div class="stat__label">Borradores</div><div class="stat__val" id="s-draft">—</div></div>
+    </div>
+
+    <div class="card">
+        <div class="card__head"><h2>Posts del Blog</h2></div>
+        <div style="overflow-x:auto;">
+            <table>
+                <thead><tr><th>Título</th><th>Slug</th><th>Estado</th><th>Fecha</th><th>Acciones</th></tr></thead>
+                <tbody id="tbody"><tr><td colspan="5"><div class="spinner"></div></td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<!-- Config Modal -->
+<div class="overlay cfg-modal" id="cfgOverlay">
+    <div class="modal">
+        <h3>Configurar Airtable</h3>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:20px;">Estos datos se guardan en tu navegador (localStorage).</p>
+        <div class="field"><label>API Token</label><input type="password" id="cfg-token" placeholder="patXXXXXXXX"></div>
+        <div class="field"><label>Base ID</label><input id="cfg-base" placeholder="appXXXXXXXX"></div>
+        <div class="field"><label>Nombre tabla blog</label><input id="cfg-table" value="Blog Posts"></div>
+        <div class="modal-foot">
+            <button class="btn-sm btn-outline" onclick="closeCfg()">Cancelar</button>
+            <button class="btn-sm btn-green" onclick="saveCfg()">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Editor Modal -->
+<div class="overlay" id="editorOverlay">
+    <div class="modal">
+        <h3 id="editorTitle">Nuevo Post</h3>
+        <input type="hidden" id="ed-id">
+        <div class="field-row">
+            <div class="field"><label>Título *</label><input id="ed-titulo" placeholder="Título del post"></div>
+            <div class="field"><label>Slug *</label><input id="ed-slug" placeholder="url-amigable"></div>
+        </div>
+        <div class="field-row">
+            <div class="field"><label>SEO Title</label><input id="ed-meta-title" placeholder="<60 chars"></div>
+            <div class="field"><label>Keyword Principal</label><input id="ed-keyword" placeholder="casa modular españa"></div>
+        </div>
+        <div class="field"><label>Meta Description</label><input id="ed-meta-desc" placeholder="<160 chars"></div>
+        <div class="field"><label>Extracto</label><input id="ed-extracto" placeholder="Resumen corto para la tarjeta"></div>
+        <div class="field"><label>URL Imagen Portada</label><input id="ed-imagen" placeholder="https://..."></div>
+        <div class="field-row">
+            <div class="field"><label>Estado</label>
+                <select id="ed-estado"><option>Borrador</option><option>Publicado</option><option>Archivado</option></select>
+            </div>
+            <div class="field"><label>Fecha Publicación</label><input type="date" id="ed-fecha"></div>
+        </div>
+        <div class="field"><label>Contenido (HTML)</label><textarea id="ed-contenido" placeholder="<h2>Subtítulo</h2><p>Párrafo...</p>"></textarea></div>
+        <div class="modal-foot">
+            <button class="btn-sm btn-outline" onclick="closeEditor()">Cancelar</button>
+            <button class="btn-sm btn-green" id="edSaveBtn" onclick="savePost()">Guardar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+var allPosts = [];
+var TABLE_NAME = 'Blog Posts';
+
+function getConf() {
+    return {
+        token: localStorage.getItem('blog_token') || '',
+        base: localStorage.getItem('blog_base') || '',
+        table: localStorage.getItem('blog_table') || TABLE_NAME
+    };
+}
+
+// ── Config ──
+function openConfig() {
+    var c = getConf();
+    document.getElementById('cfg-token').value = c.token;
+    document.getElementById('cfg-base').value = c.base;
+    document.getElementById('cfg-table').value = c.table;
+    document.getElementById('cfgOverlay').classList.add('open');
+}
+function closeCfg() { document.getElementById('cfgOverlay').classList.remove('open'); }
+function saveCfg() {
+    localStorage.setItem('blog_token', document.getElementById('cfg-token').value.trim());
+    localStorage.setItem('blog_base', document.getElementById('cfg-base').value.trim());
+    localStorage.setItem('blog_table', document.getElementById('cfg-table').value.trim() || TABLE_NAME);
+    closeCfg();
+    loadPosts();
+}
+
+// ── Load ──
+function loadPosts() {
+    var c = getConf();
+    if (!c.token || !c.base) { openConfig(); return; }
+
+    var tbody = document.getElementById('tbody');
+    tbody.innerHTML = '<tr><td colspan="5"><div class="spinner"></div></td></tr>';
+
+    var url = 'https://api.airtable.com/v0/' + encodeURIComponent(c.base) + '/' + encodeURIComponent(c.table) +
+              '?sort[0][field]=fecha_publicacion&sort[0][direction]=desc&pageSize=100';
+
+    fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token } })
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(data) {
+        allPosts = (data.records || []);
+        renderTable();
+        updateStats();
+    })
+    .catch(function(e) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:#b91c1c;">' +
+            '⚠️ Error: verifica tu API Token y Base ID. (' + e.message + ')</td></tr>';
+    });
+}
+
+function renderTable() {
+    var tbody = document.getElementById('tbody');
+    if (allPosts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted);">No hay posts. Crea el primero →</td></tr>';
+        return;
+    }
+    tbody.innerHTML = allPosts.map(function(r) {
+        var f = r.fields;
+        var estado = f.estado || 'Borrador';
+        var bc = estado === 'Publicado' ? 'badge-pub' : estado === 'Archivado' ? 'badge-arch' : 'badge-draft';
+        var fecha = f.fecha_publicacion ? new Date(f.fecha_publicacion).toLocaleDateString('es-ES') : '—';
+        return '<tr>' +
+            '<td style="font-weight:600;">' + esc(f.titulo || '—') + '</td>' +
+            '<td style="color:var(--muted);font-size:0.8rem;">' + esc(f.slug || '—') + '</td>' +
+            '<td><span class="badge ' + bc + '">' + esc(estado) + '</span></td>' +
+            '<td style="font-size:0.82rem;">' + fecha + '</td>' +
+            '<td><div class="actions">' +
+                '<button class="btn-sm btn-outline" onclick="editPost(\'' + r.id + '\')">✏️</button>' +
+                '<button class="btn-sm btn-danger" onclick="deletePost(\'' + r.id + '\',\'' + esc(f.titulo) + '\')">🗑️</button>' +
+            '</div></td>' +
+        '</tr>';
+    }).join('');
+}
+
+function updateStats() {
+    var fields = allPosts.map(function(r) { return r.fields; });
+    document.getElementById('s-total').textContent = fields.length;
+    document.getElementById('s-pub').textContent = fields.filter(function(f) { return f.estado === 'Publicado'; }).length;
+    document.getElementById('s-draft').textContent = fields.filter(function(f) { return (f.estado || 'Borrador') === 'Borrador'; }).length;
+}
+
+// ── Editor ──
+function openEditor(data) {
+    var d = data || {};
+    document.getElementById('editorTitle').textContent = d.id ? 'Editar Post' : 'Nuevo Post';
+    document.getElementById('ed-id').value = d.id || '';
+    document.getElementById('ed-titulo').value = d.titulo || '';
+    document.getElementById('ed-slug').value = d.slug || '';
+    document.getElementById('ed-meta-title').value = d.meta_title || '';
+    document.getElementById('ed-meta-desc').value = d.meta_description || '';
+    document.getElementById('ed-keyword').value = d.keyword_principal || '';
+    document.getElementById('ed-extracto').value = d.extracto || '';
+    document.getElementById('ed-imagen').value = d.imagen_portada || '';
+    document.getElementById('ed-estado').value = d.estado || 'Borrador';
+    document.getElementById('ed-fecha').value = d.fecha_publicacion || new Date().toISOString().split('T')[0];
+    document.getElementById('ed-contenido').value = d.contenido || '';
+    document.getElementById('editorOverlay').classList.add('open');
+}
+function closeEditor() { document.getElementById('editorOverlay').classList.remove('open'); }
+
+function editPost(id) {
+    var rec = allPosts.find(function(r) { return r.id === id; });
+    if (rec) openEditor(Object.assign({ id: id }, rec.fields));
+}
+
+function savePost() {
+    var c = getConf();
+    var id = document.getElementById('ed-id').value;
+    var fields = {
+        titulo: document.getElementById('ed-titulo').value.trim(),
+        slug: document.getElementById('ed-slug').value.trim(),
+        meta_title: document.getElementById('ed-meta-title').value.trim(),
+        meta_description: document.getElementById('ed-meta-desc').value.trim(),
+        keyword_principal: document.getElementById('ed-keyword').value.trim(),
+        extracto: document.getElementById('ed-extracto').value.trim(),
+        imagen_portada: document.getElementById('ed-imagen').value.trim(),
+        estado: document.getElementById('ed-estado').value,
+        fecha_publicacion: document.getElementById('ed-fecha').value,
+        contenido: document.getElementById('ed-contenido').value,
+        fecha_modificacion: new Date().toISOString().split('T')[0]
+    };
+
+    if (!fields.titulo || !fields.slug) { alert('Título y Slug son obligatorios.'); return; }
+
+    var btn = document.getElementById('edSaveBtn');
+    btn.disabled = true; btn.textContent = 'Guardando...';
+
+    var url, method;
+    if (id) {
+        url = 'https://api.airtable.com/v0/' + c.base + '/' + encodeURIComponent(c.table) + '/' + id;
+        method = 'PATCH';
+    } else {
+        url = 'https://api.airtable.com/v0/' + c.base + '/' + encodeURIComponent(c.table);
+        method = 'POST';
+    }
+
+    fetch(url, {
+        method: method,
+        headers: { 'Authorization': 'Bearer ' + c.token, 'Content-Type': 'application/json' },
+        body: JSON.stringify(id ? { fields: fields } : { records: [{ fields: fields }] })
+    })
+    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function() { closeEditor(); loadPosts(); })
+    .catch(function(e) { alert('Error al guardar: ' + e.message); })
+    .finally(function() { btn.disabled = false; btn.textContent = 'Guardar'; });
+}
+
+function deletePost(id, titulo) {
+    if (!confirm('¿Eliminar "' + titulo + '"? Esta acción no se puede deshacer.')) return;
+    var c = getConf();
+    fetch('https://api.airtable.com/v0/' + c.base + '/' + encodeURIComponent(c.table) + '/' + id, {
+        method: 'DELETE',
+        headers: { 'Authorization': 'Bearer ' + c.token }
+    })
+    .then(function(r) { if (!r.ok) throw new Error(r.status); loadPosts(); })
+    .catch(function(e) { alert('Error: ' + e.message); });
+}
+
+// Auto-generate slug from title
+document.getElementById('ed-titulo').addEventListener('input', function() {
+    if (!document.getElementById('ed-id').value) {
+        document.getElementById('ed-slug').value = this.value.toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+});
+
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// Init
+window.onload = function() {
+    if (getConf().token && getConf().base) loadPosts();
+    else openConfig();
+};
+</script>
+</body>
+</html>
