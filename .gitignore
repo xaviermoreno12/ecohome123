@@ -1,0 +1,14 @@
+# Workflow JSONs (pueden contener secrets)
+*.json
+!package.json
+
+# Documentos internos
+*.md
+*.rtf
+*.zip
+*.jfif
+
+# Archivos temporales
+tmp_*
+wf_*
+script_backup.js
